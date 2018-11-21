@@ -6,11 +6,14 @@
  * @version Nov2018
  *
  */
-public class Warrior {
+public class Warrior extends Bee{
 
     public void huntEnemies() {
         System.out.println("Killed an enemy");
     }
     
-
+    @Override
+public String toString() {
+    return "Warrior";
+}
 }

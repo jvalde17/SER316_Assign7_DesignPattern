@@ -13,7 +13,8 @@ public class Main {
      System.out.println("Welcome to my GOP patterns application.");
 
       /**
-       * Apiary test - A singleton class implementation.  
+       * SINGLETON
+       * Apiary implementation.  
        */
       // instantiating Apiary as A
         Apiary A = Apiary.testInstance(); 
@@ -24,8 +25,15 @@ public class Main {
        //update name of Apiary instance A 
         A.name = "Apiary Awesome";
         
-        System.out.println("String from A is " + A.name); 
-        System.out.println("String from B is " + B.name);
+        System.out.println("Apiary name from A is " + A.name); 
+        System.out.println("Apiary name from B is " + B.name);
+        
+        /**
+         * BUILDER PATTERN
+         * Beehive test  
+         */
+        Beehive<Drone> mydronehive = new Beehive<Drone>();
+        mydronehive.build();
     }
     
     

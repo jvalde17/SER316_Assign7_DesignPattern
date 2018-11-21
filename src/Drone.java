@@ -6,11 +6,15 @@
  * @version Nov2018
  *
  */
-public class Drone {
+public class Drone extends Bee{
     
     
     public void lookForFood() {
         System.out.println("Found new food!");
     }
     
+    @Override
+    public String toString() {
+        return "Drone";
+    }
 }

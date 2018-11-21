@@ -6,21 +6,44 @@
  * @version Nov2018
  * 
  */
-public class Beehive {
+public class Beehive<T> {
     private int room;
-    private String name;
+    private Queen queen = new Queen();
+    private T type;
+    private int numWorkerBees;
+    //private int numWarriors;
+    //private int numDrones;
     
-    public Beehive withName(String name) {
-        this.name = name;
-        
+/**
+ * method that sets the type of Bees
+ * @param type
+ * @return 
+ * @return
+ */
+
+    
+    public Beehive<T> spawn() {
+        numWorkerBees = queen.spawnEgg();
         return this;
     }
     
-    public Beehive build() {
+    public Beehive<T> addRoom() {
+        this.room++;
         
-        Beehive hive = new Beehive();
-        hive.name = this.name;
+        System.out.println("Created a new room # " + this.room);
+        return this;
+    }
+    
+ 
+    public Beehive<T> build() {
         
+        Beehive<T> hive = new Beehive<T>();
+        hive.spawn();
+        hive.addRoom();
+        hive.spawn();
+        hive.addRoom();
+        hive.spawn();
+        hive.addRoom();
         return hive;
     }
 }
