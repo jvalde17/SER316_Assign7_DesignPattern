@@ -2,7 +2,9 @@
  * a singleton apiary class implementation
  * 
  * @author Jess Valdez
- *
+ * @since 11-21-2018
+ * @version Nov2018
+ * 
  */
 public class Apiary {
     private static Apiary instance = null; 
