@@ -11,19 +11,19 @@ public class Main {
      System.out.println("Welcome to my GOP patterns application.");
 
       /**
-       * Singleton Implementation.  
+       * Apiary test - A singleton class implementation.  
        */
-      // instantiating Singleton class as A
-        Singleton A = Singleton.testInstance(); 
+      // instantiating Apiary as A
+        Apiary A = Apiary.testInstance(); 
   
-       // instantiating Singleton class as B
-        Singleton B = Singleton.testInstance();
+       // instantiating Apiary as B
+        Apiary B = Apiary.testInstance();
         
-       //update a variable of instance A 
-        A.age = 35;
+       //update name of Apiary instance A 
+        A.name = "Apiary Awesome";
         
-        System.out.println("String from A is " + A.str); 
-        System.out.println("String from B is " + B.str);
+        System.out.println("String from A is " + A.name); 
+        System.out.println("String from B is " + B.name);
     }
     
     
