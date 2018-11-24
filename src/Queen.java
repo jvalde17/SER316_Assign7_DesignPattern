@@ -6,16 +6,10 @@
  * @version Nov2018
  *
  */
-public class Queen extends Bee{
+public class Queen implements Bee{
     private int numEggs;
-    
-    /**
-     * 
-     * @return boolean
-     */
-    public boolean WarriorOrDrone(){
-        return Math.random() < 0.5;
-    }
+    final boolean haveStinger = false;
+    final String gender = "female";
     
     public int spawnEgg() {
         this.numEggs++;
@@ -26,5 +20,16 @@ public class Queen extends Bee{
     
     public String toString() {
         return "Queen";
+    }
+
+    @Override
+    public void eatFood() {
+        System.out.println("The Queen eats");
+        
+    }
+
+    public void dies() {
+        System.out.println("ThE Queen dies");
+        
     }
 }
