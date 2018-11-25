@@ -18,18 +18,17 @@ public class Queen implements Bee{
         return this.numEggs;
     }
     
-    public String toString() {
-        return "Queen";
-    }
 
     @Override
     public void eatFood() {
         System.out.println("The Queen eats");
-        
     }
 
     public void dies() {
-        System.out.println("ThE Queen dies");
-        
+        System.out.println("The Queen dies");
+    }
+    
+    public int getNumEggs() {
+        return numEggs;
     }
 }

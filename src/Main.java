@@ -1,7 +1,6 @@
 
-
 /**
- * main calls out the different class demonstrating the GOF patterns
+ * main calls out the different class demonstrating the Go4 patterns.
  * 
  * @author Jess Valdez
  * @since 11-15-2018
@@ -10,26 +9,27 @@
  */
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Welcome to my GOP patterns application.");
+    /**
+     * main starts the simulated beehive.
+     * 
+     * @param args are not used.
+     * @throws InterruptedException 
+     */
+    public static void main(String[] args) throws InterruptedException {
 
-        /**
-         * SINGLETON
-         * Apiary implementation.  
-         */    
-        Apiary A = Apiary.testInstance(); // instantiating Apiary as A
-        Apiary B = Apiary.testInstance(); // instantiating Apiary as B
+        //SINGLETON
+        //Apiary implementation.   
+        Apiary a = Apiary.testInstance(); // instantiating Apiary as a
+        Apiary b = Apiary.testInstance(); // instantiating Apiary as b
 
-        //update name of Apiary instance A 
-        A.name = "Apiary Awesome";
+        //update name of Apiary instance a 
+        a.name = "Apiary Awesome";
 
-        System.out.println("Apiary name from A is " + A.name); 
-        System.out.println("Apiary name from B is " + B.name);
+        System.out.println("Apiary name from a is " + a.name); 
+        System.out.println("Apiary name from b is " + b.name);
 
-        /**
-         * BUILDER PATTERN
-         * Beehive Demo  
-         */
+        //BUILDER PATTERN
+        //Beehive Demo  
         String honeybees = "HoneyBees";
         String killerbees = "KillerBees";
         Beehive<String> myhoneybees = new Beehive<String>(honeybees);
@@ -47,7 +47,10 @@ public class Main {
         /**
          * SIMULATION
          */
-
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("> Simulation starts.... "); 
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        myhoneybees.simApp();
 
 
     }

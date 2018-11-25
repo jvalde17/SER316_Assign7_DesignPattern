@@ -6,7 +6,7 @@
  * @version Nov2018
  *
  */
-public class Warrior implements Bee{
+public class Warrior implements Bee {
     final boolean haveStinger = false;
     final String gender = "female";
     

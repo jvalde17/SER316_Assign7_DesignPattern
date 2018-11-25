@@ -1,18 +1,18 @@
 /**
- * 
- * drone bees exist to mate with the queen
+ * Implementation of a drone bee.
+ * Drone bees exist to mate with the queen.
  * 
  * @author Jess Valdez
  * @since 11-21-2018
  * @version Nov2018
  *
  */
-public class Drone implements Bee{
+public class Drone implements Bee {
     private final String gender = "male";
     private final boolean haveStinger = false;
     
     public void mateWithTheQueen() {
-        System.out.println("Drone been is mating with the queen!");
+        System.out.println("Drone bee mates with the queen!");
     }
     
     public String getGender() {
@@ -22,11 +22,7 @@ public class Drone implements Bee{
     public boolean haveStinger() {
         return haveStinger;
     }
-    @Override
-    public String toString() {
-        return "Drone";
-    }
-
+    
     @Override
     public void eatFood() {
         System.out.println("Drone bee eats");
