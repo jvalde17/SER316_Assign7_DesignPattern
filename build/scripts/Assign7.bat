@@ -63,10 +63,10 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\Assign7.jar
+set CLASSPATH=%APP_HOME%\lib\Assign7.jar;%APP_HOME%\lib\junit-4.12.jar;%APP_HOME%\lib\hamcrest-core-1.3.jar
 
 @rem Execute Assign7
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %ASSIGN7_OPTS%  -classpath "%CLASSPATH%" main.java.Main %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %ASSIGN7_OPTS%  -classpath "%CLASSPATH%" Apiary.Main %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

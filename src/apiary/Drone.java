@@ -1,3 +1,4 @@
+package apiary;
 /**
  * Implementation of a drone bee.
  * Drone bees exist to mate with the queen.
@@ -8,25 +9,16 @@
  *
  */
 public class Drone implements Bee {
-    private final String gender = "male";
-    private final boolean haveStinger = false;
+    public final String gender = "male";
+    public final boolean haveStinger = false;
     
     public void mateWithTheQueen() {
         System.out.println("Drone bee mates with the queen!");
-    }
-    
-    public String getGender() {
-        return gender;
-    }
-    
-    public boolean haveStinger() {
-        return haveStinger;
-    }
+    }    
     
     @Override
     public void eatFood() {
-        System.out.println("Drone bee eats");
-        
+        System.out.println("Drone bee eats");   
     }
 
     public void dies() {

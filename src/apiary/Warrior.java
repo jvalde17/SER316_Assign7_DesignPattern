@@ -1,3 +1,4 @@
+package apiary;
 /**
  * warrior bees is same as worker bees, they do everything else the Drone bees do not
  * 
@@ -7,8 +8,8 @@
  *
  */
 public class Warrior implements Bee {
-    final boolean haveStinger = false;
-    final String gender = "female";
+    public final boolean haveStinger = true;
+    public final String gender = "female";
     
     public void huntEnemies() {
         System.out.println("A warrior stung an enemy");

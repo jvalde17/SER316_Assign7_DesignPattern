@@ -1,3 +1,4 @@
+package apiary;
 
 /**
  * main calls out the different class demonstrating the Go4 patterns.
@@ -28,21 +29,26 @@ public class Main {
         System.out.println("Apiary name from a is " + a.name); 
         System.out.println("Apiary name from b is " + b.name);
 
-        //BUILDER PATTERN
+        //BUILDER PATTERN + DECORATOR
+        //Beehive uses BUILDER PATTERN, 
+        //Classes Drone, Queen and Warrior are DECORATOR for class Bee
         //Beehive Demo  
         String honeybees = "HoneyBees";
-        String killerbees = "KillerBees";
+        String californiabees = "CaliforniaBees";
         Beehive<String> myhoneybees = new Beehive<String>(honeybees);
-        Beehive<String> mykillerbees = new Beehive<String>(killerbees);
+        Beehive<String> mycaliforniabees = new Beehive<String>(californiabees);
+
         System.out.println(">>>>>Hive of " + myhoneybees.getBeeType()); 
         myhoneybees.build();
-        System.out.println(">>>>>Hive of " + mykillerbees.getBeeType()); 
-        mykillerbees.build();
 
-        /**
-         * Decorator PATTERN is demonstrated by the classes
-         * Drone, Queen and Warrior but used inside Beehive
-         */
+        System.out.println(">>>>>Hive of " + mycaliforniabees.getBeeType()); 
+        Beehive<String> r1_californiabees = mycaliforniabees.build();
+
+        //VISITOR PATTERN is demonstrated through ApiaryCareTaker 
+        //by visiting/checking hive status.
+        ApiaryCaretaker caretaker = new ApiaryCaretaker();
+        caretaker.visit(r1_californiabees);
+
 
         /**
          * SIMULATION
@@ -50,7 +56,7 @@ public class Main {
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("> Simulation starts.... "); 
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        myhoneybees.simApp();
+        //myhoneybees.simApp(false);
 
 
     }

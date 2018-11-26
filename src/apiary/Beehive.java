@@ -1,27 +1,45 @@
+package apiary;
+
 import java.util.Random;
 
 /**
- * a beehive implementation class in Builder pattern
+ * a beehive implementation class in Builder pattern.
  * 
  * @author Jess Valdez
  * @since 11-21-2018
  * @version Nov2018
  * 
  */
-public class Beehive<T> {
+public class Beehive<T> implements Visitable {
     private int room;
     private int population;
     private Queen queen = new Queen();
     private Warrior warrior = new Warrior();
     private Drone drone = new Drone();
     private T beeType;
+    private boolean beehiveCollapse = false;
 
     /**
-     * method that sets the type of Bees
-     * @param type is a String describing type of bees such honeybee or africanbee.
+     * VISITOR PATTERN method that accepts the visitor.
+     * 
+     * @param visitor is the beehive visitor 
      */
-    Beehive (T type) {
-        {  this.beeType = type;  } 
+    @Override
+    public void accept(Visitor visitor) {
+        // ((Visitor) visitor).visit(this);
+        System.out.println("Visitor accepted!");
+    }
+    
+    public int getPopulation() {
+        return population;
+    }
+    
+    /**
+     * method that sets the type of Bees.
+     * @param type is a String describing type of bees such honeybee or other.
+     */
+    public Beehive(T type) {
+        this.beeType = type;  
     }
 
     public T getBeeType() { 
@@ -32,12 +50,12 @@ public class Beehive<T> {
      * Method performing a bee spawn
      */
     public Beehive<T> spawn() {
-        population += queen.spawnEgg();
+        this.population += queen.spawnEgg();
         return this;
     }
 
     /**
-     * Method performing a bee reproduction
+     * Method performing a bee reproduction.
      */
     public Beehive<T> mates() {
         drone.mateWithTheQueen();
@@ -59,18 +77,27 @@ public class Beehive<T> {
         return this;
     }
     
-    public Beehive<T> Dies() {
-        Random random = new Random();
-        boolean res = random.nextBoolean();
-        if (res) {
-            drone.dies();
-        } else {
-            warrior.dies();
-        }
+    public Beehive<T> warriorDies() {
+        warrior.dies();
+
         population -= 1;
         return this;
     }
     
+    public Beehive<T> droneDies() {
+        drone.dies();
+
+        population -= 1;
+        return this;
+    }
+    
+    public Beehive<T> queenDies() {
+        queen.dies();
+
+        population -= 1;
+        beehiveCollapse = true;
+        return this;
+    }
     /**
      * Method performing the gathering of pollen and bring 
      * it back to the hive.
@@ -110,48 +137,48 @@ public class Beehive<T> {
         return hive;
     }
 
-    public Beehive<T> simApp() throws InterruptedException {
+    public Beehive<T> simApp(boolean test) throws InterruptedException {
         Beehive<T> hive = new Beehive<T>(beeType);
-        hive.mates();
-        hive.spawn();
-        hive.gatherNectar();
-        hive.addRoom();
-
+        int random_limit = 1000;
+        if (test) {
+            random_limit = 100;
+        }
+        
         while (true) {
             Random random = new Random();
-            int randomInt = random.nextInt(100);
-            if (randomInt == 10) {
+            int randomInt = random.nextInt(random_limit);
+            switch (randomInt) {
+            case 10:
                 hive.spawn();
-                System.out.println("Population " + hive.population);
+                System.out.println("Beehive population " + hive.population);
+                break;
+            case 23: hive.gatherNectar(); break;
+            case 43: hive.addRoom(); break;
+            case 20: hive.gatherPollen(); break;
+            case 34: hive.mates(); break;
+            case 59: hive.fightsEnemies(); break;
+            case 88: hive.droneDies(); break;
+            case 89: hive.warriorDies(); break;
+
             }
-            if (randomInt == 23) {
-                hive.gatherNectar();
-            }
-            if (randomInt == 43) {
-                hive.addRoom();
-            }
-            if (randomInt == 20) {
-                hive.gatherPollen();
-            }
-            if (randomInt == 34) {
-                hive.mates();
-            }
-            if (randomInt == 59) {
-                hive.fightsEnemies();
-            }
-            if (randomInt == 99) {
-                hive.fightsEnemies();
-            }
-            if (randomInt == 88) {
-                hive.Dies();
-            }
-            if (hive.population > 10000) {
+
+            if ((hive.population > 10000) || (hive.beehiveCollapse)) {
                 break;
             }
             
-            Thread.sleep(5);
+            //code block used by BeeTest();
+            if (test) {
+               if (randomInt == 100) { //this code simply add randomness in order to increase coverage.
+                   break;
+               }
+            }
+            if (!test) {
+                Thread.sleep(5);
+            }
         }
         
         return hive;
     }
+
+    
 }

@@ -1,3 +1,5 @@
+package apiary;
+
 /**
  * a singleton apiary class implementation.
  * 
@@ -17,9 +19,11 @@ public class Apiary {
         this.name = "Cordova Apiary";
     } 
 
-    // static method to create instance of Apiary
-    public static Apiary testInstance() 
-    { 
+    /**
+     * static method to create instance of Apiary.
+     * @return
+     */
+    public static Apiary testInstance() { 
         if (instance == null) {
             instance = new Apiary(); 
         }
